@@ -1,30 +1,29 @@
-import React from 'react'
-import Logo from './../../UI/Logo/Logo'
-import NavigationItems from './../../Navigation/NavigationItems/NavigationItems'
-import Aux from './../../../hoc/Aux'
-import BackDrop from './../../UI/Backdrop/Backdrop'
-import styles from './SideDrawer.module.css'
+import React from 'react';
 
-const sideDrawer = (props) => {
-  let attachedClasses = [styles.SideDrawer, styles.Close];
+import Logo from '../../Logo/Logo';
+import NavigationItems from '../NavigationItems/NavigationItems';
+import classes from './SideDrawer.css';
+import Backdrop from '../../UI/Backdrop/Backdrop';
+import Aux from '../../../hoc/Aux/Aux';
 
-  if (props.open) {
-    attachedClasses = [styles.SideDrawer, styles.Open];
-  }
-
-  return (
-    <Aux>
-      <BackDrop show={props.open} clicked={props.clicked}/>
-      <div className={attachedClasses.join(' ')}>
-        <div className={styles.Logo}>
-          <Logo/>
-        </div>
-        <nav>
-          <NavigationItems />
-        </nav>
-      </div>
-    </Aux>
-  )
-}
+const sideDrawer = ( props ) => {
+    let attachedClasses = [classes.SideDrawer, classes.Close];
+    if (props.open) {
+        attachedClasses = [classes.SideDrawer, classes.Open];
+    }
+    return (
+        <Aux>
+            <Backdrop show={props.open} clicked={props.closed}/>
+            <div className={attachedClasses.join(' ')}>
+                <div className={classes.Logo}>
+                    <Logo />
+                </div>
+                <nav>
+                    <NavigationItems />
+                </nav>
+            </div>
+        </Aux>
+    );
+};
 
 export default sideDrawer;
